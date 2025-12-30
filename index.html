@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Свадьба Ростислава и Каролины — 10.02.2026</title>
+
+  <meta name="description" content="Приглашаем вас на наше бракосочетание. 10 февраля 2026, Villa Mosavali, Тбилиси." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4A3B2A',    /* Более глубокий кофейный */
+            secondary: '#D6CFC4',  /* Светлый беж */
+            accent: '#B5A495',     /* Серо-бежевый акцент */
+            paper: '#FDFBF7',      /* Цвет бумаги */
+            olive: '#8A9A5B',      /* Приглушенный оливковый */
+            gold: '#C5A059'        /* Золотистый для деталей */
+          },
+          fontFamily: {
+            script: ['Great Vibes', 'cursive'],
+            serif: ['Cormorant Garamond', 'serif'],
+            body: ['Montserrat', 'sans-serif']
+          },
+          backgroundImage: {
+            'texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* Базовые настройки */
+    body { 
+      background-color: #FDFBF7;
+      color: #4A3B2A;
+      overflow-x: hidden;
+    }
+    
+    /* Текстура бумаги поверх фона */
+    .bg-texture::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    html { scroll-behavior: smooth; }
+    
+    /* Анимации */
+    .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Календарь и сердце */
+    .calendar-cell { position: relative; height: 3rem; display: flex; align-items: center; justify-content: center; z-index: 1; }
+    .heart-bg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px; height: 40px;
+      color: #C5A059;
+      opacity: 0.2;
+      z-index: -1;
+      transition: all 0.5s ease;
+    }
+    .active-day .heart-bg {
+      opacity: 1;
+      width: 48px; height: 48px;
+      animation: pulse 2s infinite;
+    }
+    .active-day span { color: white; font-weight: 600; position: relative; z-index: 10; }
+    
+    @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } 100% { transform: translate(-50%, -50%) scale(1); } }
+
+    /* Спиннер загрузки */
+    .loader { border: 3px solid #f3f3f3; border-radius: 50%; border-top: 3px solid #8A9A5B; width: 24px; height: 24px; animation: spin 1s linear infinite; display: none; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-texture font-body">
+
+  <nav class="fixed inset-x-0 top-0 z-50 bg-paper/90 backdrop-blur-md shadow-sm border-b border-secondary/50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
+      <a href="#hero" class="text-3xl font-script text-primary mb-2 md:mb-0">R & K</a>
+      <div class="flex flex-wrap justify-center gap-6 text-sm uppercase tracking-widest font-serif text-primary/80">
+        <a href="#info" class="hover:text-gold transition">Информация</a>
+        <a href="#calendar" class="hover:text-gold transition">Дата</a>
+        <a href="#location" class="hover:text-gold transition">Локация</a>
+        <a href="#rsvp" class="hover:text-gold transition">RSVP</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="min-h-screen flex items-center justify-center pt-20 pb-10 px-4 relative">
+    <div class="absolute top-20 left-10 w-64 h-64 bg-olive/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-gold/10 rounded-full blur-3xl"></div>
+
+    <div class="text-center max-w-4xl mx-auto z-10 fade-in" style="animation-delay: 0.2s;">
+      <p class="text-lg md:text-xl font-serif text-primary/70 tracking-widest uppercase mb-6">Приглашаем вас на наше бракосочетание</p>
+      
+      <div class="font-script text-6xl md:text-8xl text-primary leading-tight mb-8">
+        Ростислав <br> <span class="text-4xl md:text-6xl text-gold">&</span> <br> Каролина
+      </div>
+
+      <div class="flex flex-col items-center gap-4 font-serif text-2xl md:text-3xl text-primary border-t border-b border-primary/20 py-8 mx-auto w-fit px-10">
+        <span>10 Февраля 2026</span>
+        <span class="text-base md:text-lg italic text-primary/80">Вторник • Начало в 12:00</span>
+        <span>Зал Villa Mosavali - Тбилиси</span>
+      </div>
+
+      <div class="mt-12">
+        <a href="#rsvp" class="inline-block bg-primary text-white font-serif tracking-widest px-10 py-4 rounded shadow-lg hover:bg-primary/90 transition transform hover:-translate-y-1">
+          Подтвердить участие
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="info" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <i class="fa-solid fa-envelope-open-text text-4xl text-gold mb-4"></i>
+        <h2 class="text-4xl font-serif text-primary">Дорогие гости!</h2>
+      </div>
+
+      <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl border border-secondary/30 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-gold to-primary"></div>
+
+        <p class="text-center text-lg mb-8 font-serif italic">Мы приглашаем вас разделить с нами этот особенный день.</p>
+        
+        <div class="space-y-10">
+          
+          <div class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-paper border border-gold flex items-center justify-center text-gold text-xl">
+              <i class="fa-solid fa-hotel"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-primary mb-2">Размещение</h3>
+              <p class="text-primary/80 leading-relaxed text-sm md:text-base">
+                Бракосочетание будет проходить в Тбилиси. К сожалению, возможности разместить гостей нет, поэтому просим вас позаботиться о своём пребывании самостоятельно. Ссылка на геолокацию нашего зала доступна в разделе "Локация", чтобы вы могли выбрать наиболее удобный вариант.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-paper border border-gold flex items-center justify-center text-gold text-xl">
+              <i class="fa-solid fa-plane-arrival"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-primary mb-2">Перелёт и Погода (Важно!)</h3>
+              <p class="text-primary/80 leading-relaxed text-sm md:text-base">
+                Для гостей, прилетающих самолётом: просим приобретать обратные билеты с запасом. 
+                10 февраля — это вторник, и в зимний период перевал может быть закрыт на 1–2 дня. 
+                Рекомендуем планировать обратный вылет так, чтобы у вас была возможность переноса на среду.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-paper border border-gold flex items-center justify-center text-gold text-xl">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-primary mb-2">Для водителей</h3>
+              <p class="text-primary/80 leading-relaxed text-sm md:text-base">
+                Чтобы наш праздник состоялся именно 10 числа, просим гостей, которые будут добираться на машинах, выезжать немного заранее, учитывая возможные задержки на дорогах.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <p class="font-script text-3xl text-primary">Благодарим вас за понимание 🤍</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calendar" class="py-16 px-4 bg-secondary/20">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-serif text-primary mb-2">Февраль 2026</h2>
+      <p class="text-primary/60 italic mb-8">Сохраните дату</p>
+
+      <div class="bg-white p-6 rounded shadow-lg max-w-md mx-auto border border-primary/10">
+        <div class="grid grid-cols-7 gap-2 mb-4 text-gold font-serif text-sm tracking-wider border-b border-secondary pb-2">
+          <div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div>
+        </div>
+        <div id="calendarGrid" class="grid grid-cols-7 gap-2 font-body text-primary/80">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-serif text-primary mb-4">Локация</h2>
+        <p class="text-xl text-primary font-medium">Villa Mosavali</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center gap-8 bg-white p-4 rounded-xl shadow-lg">
+        <div class="w-full md:w-2/3 h-80 rounded-lg overflow-hidden bg-gray-200">
+           <iframe 
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.167232391068!2d44.69720397656754!3d41.84606776739665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40445d0484555555%3A0x6b77202720d2c676!2sVilla%20Mosavali!5e0!3m2!1sru!2sge!4v1709123456789!5m2!1sru!2sge" 
+             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+           </iframe>
+        </div>
+        
+        <div class="w-full md:w-1/3 flex flex-col gap-4">
+          <p class="text-center md:text-left text-sm text-primary/70 mb-2">Нажмите, чтобы построить маршрут:</p>
+          <a href="https://yandex.ru/maps/?text=Villa+Mosavali+Georgia" target="_blank" class="flex items-center justify-center gap-3 py-3 px-6 border border-primary/30 rounded hover:bg-primary hover:text-white transition group">
+             <i class="fa-brands fa-yandex text-red-500 group-hover:text-white"></i> Яндекс.Карты
+          </a>
+          <a href="https://maps.app.goo.gl/srGdEje5nG3aDKf6A" target="_blank" class="flex items-center justify-center gap-3 py-3 px-6 border border-primary/30 rounded hover:bg-primary hover:text-white transition group">
+             <i class="fa-brands fa-google text-blue-500 group-hover:text-white"></i> Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timer" class="py-16 px-4 bg-primary text-white text-center">
+    <h2 class="text-3xl font-serif mb-8 text-gold">До праздника осталось</h2>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-8 max-w-4xl mx-auto">
+      <div class="flex flex-col items-center">
+        <span id="days" class="text-4xl md:text-6xl font-script text-gold">00</span>
+        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70">Дней</span>
+      </div>
+      <div class="text-3xl md:text-5xl font-script text-gold/50">:</div>
+      <div class="flex flex-col items-center">
+        <span id="hours" class="text-4xl md:text-6xl font-script text-gold">00</span>
+        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70">Часов</span>
+      </div>
+      <div class="text-3xl md:text-5xl font-script text-gold/50">:</div>
+      <div class="flex flex-col items-center">
+        <span id="minutes" class="text-4xl md:text-6xl font-script text-gold">00</span>
+        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70">Минут</span>
+      </div>
+      <div class="text-3xl md:text-5xl font-script text-gold/50">:</div>
+      <div class="flex flex-col items-center">
+        <span id="seconds" class="text-4xl md:text-6xl font-script text-gold">00</span>
+        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70">Секунд</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="py-20 px-4 bg-texture">
+    <div class="max-w-xl mx-auto bg-white p-8 md:p-10 rounded-2xl shadow-2xl border-t-4 border-primary">
+      <h2 class="text-4xl font-serif text-center text-primary mb-2">RSVP</h2>
+      <p class="text-center text-primary/60 mb-8">Пожалуйста, подтвердите участие до 15 января</p>
+
+      <form id="rsvpForm" class="space-y-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-primary/70 mb-1">Ваше Имя и Фамилия</label>
+          <input type="text" name="name" required class="w-full border-b border-primary/30 bg-transparent py-2 focus:outline-none focus:border-gold transition placeholder-gray-400" placeholder="Иван и Мария Ивановы">
+        </div>
+        
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-primary/70 mb-1">Контакт для связи (Telegram/WhatsApp)</label>
+          <input type="text" name="contact" class="w-full border-b border-primary/30 bg-transparent py-2 focus:outline-none focus:border-gold transition" placeholder="@username или номер">
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-primary/70 mb-1">Планируете ли вы быть?</label>
+          <select name="attendance" class="w-full border-b border-primary/30 bg-transparent py-2 focus:outline-none focus:border-gold transition cursor-pointer">
+            <option value="Я приду один/одна">Я приду один/одна</option>
+            <option value="Мы будем вдвоём">Мы будем вдвоём</option>
+            <option value="К сожалению, не смогу">К сожалению, не смогу</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-primary/70 mb-1">Комментарии (Аллергии и пр.)</label>
+          <textarea name="notes" rows="2" class="w-full border-b border-primary/30 bg-transparent py-2 focus:outline-none focus:border-gold transition" placeholder="..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full bg-primary text-white font-serif tracking-widest py-4 mt-4 rounded hover:bg-primary/90 transition flex justify-center items-center gap-2">
+          <span>Отправить</span>
+          <div class="loader" id="loader"></div>
+        </button>
+      </form>
+
+      <div id="formMessage" class="hidden mt-6 text-center p-4 bg-green-50 text-green-800 rounded border border-green-200">
+        Спасибо! Ваш ответ записан.
+      </div>
+      <div id="formError" class="hidden mt-6 text-center p-4 bg-red-50 text-red-800 rounded border border-red-200">
+        Ошибка отправки. Попробуйте позже.
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-primary py-10 text-center text-white/60 text-sm font-serif">
+    <p>© 2026 Свадьба Ростислава и Каролины</p>
+    <p class="mt-2 text-xs opacity-50">Villa Mosavali</p>
+  </footer>
+
+  <script>
+    // 1. НАСТРОЙКИ ДАТЫ
+    // Тбилиси: GMT+4. Дата: 10 февраля 2026, 12:00
+    const WEDDING_DATE = new Date('2026-02-10T12:00:00+04:00');
+
+    // 2. КАЛЕНДАРЬ (ФЕВРАЛЬ 2026)
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      // 1 февраля 2026 - это Воскресенье.
+      // Сетка у нас ПН-ВС. Значит пустых ячеек перед 1 числом: 6 штук.
+      const emptyDays = 6; 
+      const totalDays = 28; // 2026 не високосный
+
+      // Пустые ячейки
+      for(let i=0; i<emptyDays; i++) {
+        const div = document.createElement('div');
+        grid.appendChild(div);
+      }
+
+      // Дни
+      for(let d=1; d<=totalDays; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-cell rounded';
+        
+        if (d === 10) {
+          cell.classList.add('active-day');
+          // Сердце (фон) + Число (поверх)
+          cell.innerHTML = `
+            <svg class="heart-bg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span>${d}</span>
+          `;
+        } else {
+          cell.textContent = d;
+        }
+        grid.appendChild(cell);
+      }
+    }
+
+    // 3. ТАЙМЕР
+    function updateTimer() {
+      const now = new Date();
+      const diff = WEDDING_DATE - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('minutes').innerText = "00";
+        document.getElementById('seconds').innerText = "00";
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+      document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+      document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+      document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+    }
+
+    // 4. ОТПРАВКА ФОРМЫ (Google Script)
+    const form = document.getElementById('rsvpForm');
+    
+    // ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ ОТ GOOGLE SCRIPT (Deploy -> Web App URL)
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoJmp9uKtenOLupVjW6GGnxCyBBn5Fy2rHtvnBsKQDL1Ha7Punz0UrtFi2yQKSIRHB/exec'; 
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (GOOGLE_SCRIPT_URL === 'ВАША_ССЫЛКА_НА_GOOGLE_SCRIPT_ЗДЕСЬ') {
+        alert('Ошибка: Вы не вставили ссылку на Google Script в код сайта (строка ~300).');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      const loader = document.getElementById('loader');
+      const msgSuccess = document.getElementById('formMessage');
+      const msgError = document.getElementById('formError');
+
+      // UI Loading state
+      btn.disabled = true;
+      btn.querySelector('span').textContent = 'Отправка...';
+      loader.style.display = 'inline-block';
+      msgSuccess.classList.add('hidden');
+      msgError.classList.add('hidden');
+
+      // Collect data
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      // Send to Google Script
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Важно для Google Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        // Успех (из-за no-cors мы не видим реальный ответ, считаем, что ушло)
+        form.reset();
+        msgSuccess.classList.remove('hidden');
+      })
+      .catch(err => {
+        console.error(err);
+        msgError.classList.remove('hidden');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Отправить';
+        loader.style.display = 'none';
+      });
+    });
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCalendar();
+      setInterval(updateTimer, 1000);
+      updateTimer();
+    });
+  </script>
+</body>
+</html>
