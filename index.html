@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -96,6 +96,126 @@
     .photo-arch {
       border-radius: 300px 300px 20px 20px; /* Форма арки */
       box-shadow: 0 10px 25px -5px rgba(82, 50, 17, 0.15), 0 8px 10px -6px rgba(82, 50, 17, 0.1);
+    }
+    
+    /* Улучшенный таймер */
+    .timer-card {
+      background: linear-gradient(145deg, #FDFBF7, #E8E3D8);
+      box-shadow: 0 10px 30px -10px rgba(82, 50, 17, 0.2), 
+                  inset 0 1px 0 rgba(255,255,255,0.3),
+                  inset 0 -1px 0 rgba(0,0,0,0.1);
+      border: 1px solid rgba(139, 90, 43, 0.2);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .timer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #C6D3B3, #D7BABD, #C6D3B3);
+      z-index: 10;
+    }
+    
+    .timer-unit {
+      position: relative;
+      background: linear-gradient(145deg, #F8F6F0, #E8E3D8);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1),
+                  0 4px 6px rgba(82, 50, 17, 0.1);
+      border: 1px solid rgba(139, 90, 43, 0.15);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      min-width: 100px;
+      transition: all 0.3s ease;
+    }
+    
+    .timer-unit:hover {
+      transform: translateY(-5px);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1),
+                  0 8px 15px rgba(82, 50, 17, 0.2);
+    }
+    
+    .timer-value {
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #523211;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1;
+    }
+    
+    .timer-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6B8F71;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .timer-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #D7BABD;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin: 0 0.5rem;
+    }
+    
+    .timer-decor {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .timer-decor::before,
+    .timer-decor::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D7BABD' opacity='0.1'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center;
+      opacity: 0.3;
+    }
+    
+    .timer-decor::before {
+      top: 20px;
+      left: 20px;
+      transform: rotate(20deg);
+    }
+    
+    .timer-decor::after {
+      bottom: 20px;
+      right: 20px;
+      transform: rotate(-30deg);
+    }
+    
+    .timer-title {
+      font-size: 2.5rem;
+      color: #523211;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .timer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #D7BABD, transparent);
     }
   </style>
 </head>
@@ -261,27 +381,44 @@
     </div>
   </section>
 
-  <section id="timer" class="py-16 px-4 bg-primary text-white text-center">
-    <h2 class="text-3xl font-serif mb-8 text-secondary">До праздника осталось</h2>
-    <div class="flex flex-wrap justify-center gap-4 md:gap-8 max-w-4xl mx-auto">
-      <div class="flex flex-col items-center">
-        <span id="days" class="text-4xl md:text-6xl font-script text-light">00</span>
-        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70 text-secondary">Дней</span>
+  <section id="timer" class="py-20 px-4 bg-primary text-white text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="timer-title text-3xl font-script mb-12 text-secondary relative">До праздника осталось</h2>
+      
+      <div class="flex flex-wrap justify-center items-center gap-4 md:gap-2 max-w-5xl mx-auto">
+        <div class="timer-card timer-unit relative">
+          <div class="timer-decor"></div>
+          <span id="days" class="timer-value text-secondary">00</span>
+          <span class="timer-label text-oliveDark">Дней</span>
+        </div>
+        
+        <div class="timer-separator">:</div>
+        
+        <div class="timer-card timer-unit relative">
+          <div class="timer-decor"></div>
+          <span id="hours" class="timer-value text-secondary">00</span>
+          <span class="timer-label text-oliveDark">Часов</span>
+        </div>
+        
+        <div class="timer-separator">:</div>
+        
+        <div class="timer-card timer-unit relative">
+          <div class="timer-decor"></div>
+          <span id="minutes" class="timer-value text-secondary">00</span>
+          <span class="timer-label text-oliveDark">Минут</span>
+        </div>
+        
+        <div class="timer-separator">:</div>
+        
+        <div class="timer-card timer-unit relative">
+          <div class="timer-decor"></div>
+          <span id="seconds" class="timer-value text-secondary">00</span>
+          <span class="timer-label text-oliveDark">Секунд</span>
+        </div>
       </div>
-      <div class="text-3xl md:text-5xl font-script text-secondary/50">:</div>
-      <div class="flex flex-col items-center">
-        <span id="hours" class="text-4xl md:text-6xl font-script text-light">00</span>
-        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70 text-secondary">Часов</span>
-      </div>
-      <div class="text-3xl md:text-5xl font-script text-secondary/50">:</div>
-      <div class="flex flex-col items-center">
-        <span id="minutes" class="text-4xl md:text-6xl font-script text-light">00</span>
-        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70 text-secondary">Минут</span>
-      </div>
-      <div class="text-3xl md:text-5xl font-script text-secondary/50">:</div>
-      <div class="flex flex-col items-center">
-        <span id="seconds" class="text-4xl md:text-6xl font-script text-light">00</span>
-        <span class="text-xs md:text-sm uppercase tracking-widest opacity-70 text-secondary">Секунд</span>
+      
+      <div class="mt-12 text-center">
+        <p class="text-xl font-script text-secondary">Скоро мы будем вместе!</p>
       </div>
     </div>
   </section>
@@ -457,3 +594,4 @@
   </script>
 </body>
 </html>
+
